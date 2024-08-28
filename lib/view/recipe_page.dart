@@ -2,7 +2,6 @@ import 'package:download_recipe_in_pdf/controller/recipe_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class RecipePage extends StatelessWidget {
   final RecipeController controller = Get.put(RecipeController());
 
@@ -39,18 +38,16 @@ class RecipePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(recipeTitle, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            Text(recipeTitle,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 20),
             Text(recipeContent, style: const TextStyle(fontSize: 16)),
             const SizedBox(height: 40),
             ElevatedButton.icon(
               onPressed: () async {
-                await controller.downloadRecipeAsPDF(recipeTitle, recipeContent);
-                Get.snackbar('Download Started', 'Your recipe is being downloaded as a PDF.',
-                  snackPosition: SnackPosition.BOTTOM,
-                  backgroundColor: Colors.green,
-                  colorText: Colors.white,
-                );
+                await controller.downloadRecipeAsPDF(
+                    recipeTitle, recipeContent);
               },
               icon: const Icon(Icons.download),
               label: const Text('Download Recipe'),
